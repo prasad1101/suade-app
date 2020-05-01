@@ -1,0 +1,21 @@
+table, tr, td, th {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+tr.row {
+    cursor: pointer;
+}
+
+.row .sign:after {
+    content: "+";
+    /* display: inline-block; */
+}
+
+.row.expand .sign:after {
+    content: "-";
+}
+
+.row {
+    display: contents;
+}
