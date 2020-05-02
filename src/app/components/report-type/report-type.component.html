@@ -5,10 +5,11 @@
     <button [routerLink]="['']">Back to home</button>
     <h2>Report types</h2>
     <div class="m-3">
-        <span class="mr-2">Report types</span><input type="text" placeholder="Search..."><button>Search</button>
+        <span class="mr-2">Report types</span><input id="searchInput" [(ngModel)]="serachText" type="text"
+            placeholder="Search..."><button (click)="searchReport()">Search</button>
     </div>
 
-    <table class="table " border="0">
+    <!-- <table class="table " border="0">
         <thead class="bg-primary">
             <tr>
                 <td>
@@ -21,59 +22,74 @@
         </thead>
         <tbody class="table-striped">
 
+            <ng-container *ngFor="let r of reportData">
+                <tr class="button expand">
+                    <td><button><span class="sign"></span></button>{{r.report_name}}</td>
+                    <td>{{r.data_description}}</td>
+
+                </tr>
+                <tr class="button2 expand">
+                    <td colspan="2"><button><span class="sign"></span></button>{{r.data_name}}</td>
+                </tr>
+                <ng-container *ngFor="let c of cellData">
+                    <tr *ngIf="r.report_name == c.report_name" class="button3">
+                        <td><button><span class="sign"></span></button>{{c.cell_name}}</td>
+                        <td>{{c.cell_description}}</td>
+                    </tr>
+                </ng-container>
 
 
-            <tr class="row expand">
-                <td><button><span class="sign"></span></button> Report 1</td>
-                <td>Testing Report 1</td>
-            </tr>
-            <tr>
-                <td>data</td>
-                <td>data</td>
-            </tr>
-            <tr>
-                <td>data</td>
-                <td>data</td>
-            </tr>
+            </ng-container>
 
-            <tr class="row expand">
-                <td><button><span class="sign"></span></button> Report 2 </td>
-                <td>Testing Report 2</td>
-            </tr>
-            <tr>
-                <td>data</td>
-                <td>data</td>
-            </tr>
-            <tr>
-                <td>data</td>
-                <td>data</td>
-            </tr>
+        </tbody>
+    </table> -->
 
-            <tr class="row expand">
-                <td> <button><span class="sign"></span></button> Report 3 </td>
-                <td>Testing Report 3</td>
-            </tr>
+
+    <table class="table" id="dataTable" border="0">
+        <thead class="bg-primary">
             <tr>
-                <td>data</td>
-                <td>data</td>
+                <th>
+                    Report Name
+                </th>
+                <th>
+                    Report Description
+                </th>
             </tr>
-            <tr>
-                <td>data</td>
-                <td>data</td>
-            </tr>
-            <tr class="row expand">
-                <td><button><span class="sign"></span></button> Report 4 </td>
-                <td>Testing Report 4</td>
-            </tr>
-            <tr>
-                <td>data</td>
-                <td>data</td>
-            </tr>
-            <tr>
-                <td>data</td>
-                <td>data</td>
-            </tr>
+        </thead>
+        <tbody class="table-striped">
+
+            <ng-container *ngFor="let r of reportData">
+                <tr class="button">
+                    <td><button (click)="toggleReport(r.report_name)"
+                            [ngClass]="{'plus' : r.report_name != level, 'minus' :r.report_name == level}"></button>{{r.report_name}}
+                    </td>
+                    <td>{{r.data_description}}</td>
+
+                </tr>
+
+                <ng-container *ngFor="let d of reportData">
+                    <tr style="background-color:#cedece;" class="button2"
+                        *ngIf="level && d.report_name == r.report_name && d.report_name == level">
+                        <td colspan="2"><button (click)="toggleData(d.report_name,r.report_name)"
+                                [ngClass]="{'plus' : d.report_name != data, 'minus' :d.report_name == data}"></button>{{r.data_name}}
+                        </td>
+                    </tr>
+
+                </ng-container>
+                <ng-container *ngFor="let c of cellData">
+                    <tr style="background-color: #d8cfcf;"
+                        *ngIf="c.report_name == data && c.report_name == r.report_name" class="button3">
+                        <td><button><span class="sign"></span></button>{{c.cell_name}}</td>
+                        <td>{{c.cell_description}}</td>
+                    </tr>
+                </ng-container>
+
+
+            </ng-container>
+
         </tbody>
     </table>
+
+
 
 </div>

@@ -3,19 +3,53 @@ table, tr, td, th {
     border-collapse: collapse;
 }
 
-tr.row {
+tr.button {
     cursor: pointer;
 }
 
-.row .sign:after {
+.button .sign:after {
     content: "+";
     /* display: inline-block; */
 }
 
-.row.expand .sign:after {
+.button.expand .sign:after {
     content: "-";
 }
 
-.row {
-    display: contents;
+tr.button2 {
+    cursor: pointer;
 }
+
+.button2 .sign:after {
+    content: "+";
+    /* display: inline-block; */
+}
+
+.button2.expand .sign:after {
+    content: "-";
+}
+
+tr.button3 {
+    cursor: pointer;
+}
+
+.button3 .sign:after {
+    content: "+";
+    /* display: inline-block; */
+}
+
+.button3.expand .sign:after {
+    content: "-";
+}
+
+.plus:after {
+    content: "+";
+}
+
+.minus:after {
+    content: "-";
+}
+
+/* .button {
+    display: contents;
+} */
