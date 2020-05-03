@@ -22,6 +22,10 @@ export class ReportTypeComponent implements OnInit {
   reportData: any;
   cellData: any;
   reportCells: any;
+  aggregatorData: any;
+  conditionData: any;
+  fireElementData: any;
+  metricData: any;
 
   ngOnInit() {
 
@@ -42,18 +46,28 @@ export class ReportTypeComponent implements OnInit {
       }, 1000);
     })
 
+    this.getAggregatorData().subscribe(x => {
+      this.aggregatorData = x;
+      console.log("aggregator data", x);
+    })
+
+    this.getConditionData().subscribe(x => {
+      this.conditionData = x;
+      console.log("condition data", x);
+    })
+    this.getFireElementData().subscribe(x => {
+      this.fireElementData = x;
+      console.log("fireElement data", x);
+    })
+    this.getMetricData().subscribe(x => {
+      this.metricData = x;
+      console.log("metric data", x);
+    })
+
   }
 
 
 
-  removeDuplicates(array, key) {
-    return array.reduce((accumulator, element) => {
-      if (!accumulator.find(el => el[key] === element[key])) {
-        accumulator.push(element);
-      }
-      return accumulator;
-    }, []);
-  }
 
 
   enableJQ() {
@@ -63,6 +77,7 @@ export class ReportTypeComponent implements OnInit {
     });
 
   }
+
   getReportData(): Observable<any> {
     return this.http.get('../../assets/report-types.json')
   }
@@ -71,11 +86,30 @@ export class ReportTypeComponent implements OnInit {
     return this.http.get('../../assets/report-cells.json')
   }
 
+  getAggregatorData(): Observable<any> {
+    return this.http.get('../../assets/aggregator.json')
+  }
+  getConditionData(): Observable<any> {
+    return this.http.get('../../assets/condition.json')
+  }
+  getFireElementData(): Observable<any> {
+    return this.http.get('../../assets/fire-element.json')
+  }
+  getMetricData(): Observable<any> {
+    return this.http.get('../../assets/metric.json')
+  }
+
+
+
+
+
   level: any;
   data: any;
   cell: any;
   signLevel = "+";
   signData = "+";
+
+
   toggleReport(reportName) {
     if (this.level == reportName) {
       this.level = undefined;
@@ -123,5 +157,15 @@ export class ReportTypeComponent implements OnInit {
     }
   }
 
+  toggleCell(cell, level) {
+    if (this.cell == cell) {
+      this.cell = undefined
+    } else {
+      console.log("cell and level on cell click", cell, level)
+      this.cell = cell;
+      this.level = level;
+    }
+
+  }
 
 }
