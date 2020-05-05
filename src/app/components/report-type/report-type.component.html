@@ -67,17 +67,33 @@
 
                 </tr>
 
+                <tr *ngIf="level == r.report_name" style="background-color:#cedece;" class="button2">
+                    <!-- <td colspan="2"><button (click)="activeCellLevelForReport=r.report_name" class="plus"></button>Cell
+                                        </td> -->
+                    <td colspan="2"><button (click)="toggleDataForSubData(r.report_name)"
+                            [ngClass]="{'plus' : r.report_name != activeDataLevelForReport, 'minus' :r.report_name == activeDataLevelForReport}"></button>Data
+                    </td>
+
+                </tr>
                 <ng-container *ngFor="let d of reportData">
                     <tr style="background-color:#cedece;" class="button2"
-                        *ngIf="level && d.report_name == r.report_name && d.report_name == level">
+                        *ngIf="level && d.report_name == r.report_name && d.report_name == level && activeDataLevelForReport==r.report_name">
                         <td colspan="2"><button>+</button>{{r.data_name}}
                         </td>
                     </tr>
                 </ng-container>
 
+                <tr *ngIf="level == r.report_name" style="background-color:#cedece;" class="button2">
+                    <!-- <td colspan="2"><button (click)="activeCellLevelForReport=r.report_name" class="plus"></button>Cell
+                    </td> -->
+                    <td colspan="2"><button (click)="toggleCellForSubCell(r.report_name)"
+                            [ngClass]="{'plus' : r.report_name != activeCellLevelForReport, 'minus' :r.report_name == activeCellLevelForReport}"></button>Cell
+                    </td>
+
+                </tr>
                 <ng-container *ngFor="let cell of reportData">
                     <tr style="background-color:#cedece;" class="button2"
-                        *ngIf="level && cell.report_name == r.report_name && cell.report_name == level">
+                        *ngIf="level && cell.report_name == r.report_name && cell.report_name == level && activeCellLevelForReport==r.report_name">
                         <td colspan="2"><button (click)="toggleData(cell.report_name,r.report_name)"
                                 [ngClass]="{'plus' : cell.report_name != data, 'minus' :cell.report_name == data}"></button>{{cell.cell}}
                         </td>
