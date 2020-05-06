@@ -26,8 +26,13 @@ export class ReportTypeComponent implements OnInit {
   conditionData: any;
   fireElementData: any;
   metricData: any;
+  Data: any;
 
   ngOnInit() {
+    this.getData().subscribe(Data  => {
+      console.log("Datatype" , Data)
+      this.Data= Data;
+    })
 
     this.level = undefined;
     this.data = undefined;
@@ -98,6 +103,10 @@ export class ReportTypeComponent implements OnInit {
   getMetricData(): Observable<any> {
     return this.http.get('../../assets/metric.json')
   }
+  getData(): Observable<any> {
+    return this.http.get('../../assets/Data.json')
+  }
+
 
 
 
