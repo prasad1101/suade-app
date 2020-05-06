@@ -29,11 +29,8 @@ export class ReportTypeComponent implements OnInit {
   Data: any;
 
   ngOnInit() {
-    this.getData().subscribe(Data  => {
-      console.log("Datatype" , Data)
-      this.Data= Data;
-    })
-
+    this.activeDataLevelForReport == null;
+    this.activeCellLevelForReport == null;
     this.level = undefined;
     this.data = undefined;
 
@@ -117,12 +114,37 @@ export class ReportTypeComponent implements OnInit {
   cell: any;
   signLevel = "+";
   signData = "+";
+  activeCellLevelForReport: any;
+  activeDataLevelForReport: any;
+  toggleDataForSubData(level) {
+    if (this.activeDataLevelForReport == level) {
+      console.log("toggle collapse", level)
+      this.activeDataLevelForReport = null;
+    } else {
+      console.log("toggle expand", level)
+      this.activeDataLevelForReport = level;
+    }
+  }
+
+  toggleCellForSubCell(level) {
+
+    if (this.activeCellLevelForReport == level) {
+      console.log("toggle collapse", level)
+      this.activeCellLevelForReport = null;
+    } else {
+      console.log("toggle expand", level)
+      this.activeCellLevelForReport = level;
+    }
+
+  }
 
 
   toggleReport(reportName) {
     if (this.level == reportName) {
       this.level = undefined;
       this.data = undefined;
+      this.activeDataLevelForReport == null;
+      this.activeCellLevelForReport == null;
       this.signLevel = "+";
     } else {
       this.data = undefined;
