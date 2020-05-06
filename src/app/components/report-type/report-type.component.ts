@@ -103,6 +103,27 @@ export class ReportTypeComponent implements OnInit {
     return this.http.get('../../assets/data.json')
   }
 
+  //for search
+
+  serachText: string;
+  searchReport() {
+    var input, filter, table, tr, td, i, txtValue;
+    //input = document.getElementById("searchInput");
+    filter = this.serachText.toUpperCase();
+    table = document.getElementById("dataTable");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[0];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  }
 
   // Operations
 
@@ -117,16 +138,21 @@ export class ReportTypeComponent implements OnInit {
   }
 
   openReport(reportId) {
-    this.tableConfig = {
-      reportId: null,
-      dataId: null,
-      cellId: null,
-      subCellId: null,
-      showSubcellsForReportId: null,
-      showSubDatacellsForReportId: null,
-      aggId: null
+    if (reportId === this.tableConfig.reportId) {
+      this.tableConfig.reportId = null;
+    } else {
+      this.tableConfig = {
+        reportId: null,
+        dataId: null,
+        cellId: null,
+        subCellId: null,
+        showSubcellsForReportId: null,
+        showSubDatacellsForReportId: null,
+        aggId: null
+      }
+      this.tableConfig.reportId = reportId;
     }
-    this.tableConfig.reportId = reportId;
+
   }
 
   openDataForReport(reportId, dataId) {
@@ -134,22 +160,41 @@ export class ReportTypeComponent implements OnInit {
     this.tableConfig.dataId = dataId;
   }
   openCellsForReport(reportId) {
+    if (reportId === this.tableConfig.showSubcellsForReportId) {
+      this.tableConfig.showSubcellsForReportId = null;
+    } else {
+      this.tableConfig.showSubcellsForReportId = reportId;
+    }
 
-    this.tableConfig.showSubcellsForReportId = reportId;
   }
 
   openSubDatacellsForReport(reportId) {
-    this.tableConfig.showSubDatacellsForReportId = reportId;
+    if (reportId === this.tableConfig.showSubDatacellsForReportId) {
+      this.tableConfig.showSubDatacellsForReportId = null;
+    } else {
+      this.tableConfig.showSubDatacellsForReportId = reportId;
+    }
+
   }
 
   openSubCellsForReport(reportId, cellId) {
-    this.tableConfig.reportId = reportId;
-    this.tableConfig.cellId = cellId;
+    if (cellId === this.tableConfig.cellId) {
+      this.tableConfig.cellId = null
+    } else {
+      this.tableConfig.reportId = reportId;
+      this.tableConfig.cellId = cellId;
+    }
+
   }
   openSubCellDataForReport(reportId, subCellId) {
-    this.tableConfig.reportId = reportId;
-    this.tableConfig.subCellId = subCellId;
-    console.log(this.tableConfig)
+    if (subCellId === this.tableConfig.subCellId) {
+      this.tableConfig.subCellId = null
+    } else {
+      this.tableConfig.reportId = reportId;
+      this.tableConfig.subCellId = subCellId;
+      console.log(this.tableConfig)
+    }
+
   }
   openAggData(reportId, aggId) {
     this.tableConfig.reportId = reportId;

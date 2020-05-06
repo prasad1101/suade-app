@@ -1,5 +1,30 @@
-[{
+[
+    {
         "reportId": "report1",
+        "label": "cell 1",
+        "cellId": "cell1",
+        "cellDescription": "test cell 1"
+    },
+    {
+        "reportId": "report1",
+        "label": "cell 2",
+        "cellId": "cell2",
+        "cellDescription": "test cell 2"
+    },
+    {
+        "reportId": "report1",
+        "label": "cell 3",
+        "cellId": "cell3",
+        "cellDescription": "test cell 3"
+    },
+    {
+        "reportId": "report1",
+        "label": "cell 4",
+        "cellId": "cell4",
+        "cellDescription": "test cell 4"
+    },
+    {
+        "reportId": "report2",
         "label": "cell 1",
         "cellId": "cell1",
         "cellDescription": "test cell 1"
@@ -13,13 +38,61 @@
     {
         "reportId": "report2",
         "label": "cell 3",
+        "cellId": "cell3",
+        "cellDescription": "test cell 3"
+    },
+    {
+        "reportId": "report2",
+        "label": "cell 4",
+        "cellId": "cell4",
+        "cellDescription": "test cell 4"
+    },
+    {
+        "reportId": "report3",
+        "label": "cell 1",
         "cellId": "cell1",
+        "cellDescription": "test cell 1"
+    },
+    {
+        "reportId": "report3",
+        "label": "cell 2",
+        "cellId": "cell2",
+        "cellDescription": "test cell 2"
+    },
+    {
+        "reportId": "report3",
+        "label": "cell 3",
+        "cellId": "cell3",
+        "cellDescription": "test cell 3"
+    },
+    {
+        "reportId": "report3",
+        "label": "cell 4",
+        "cellId": "cell4",
+        "cellDescription": "test cell 4"
+    },
+    {
+        "reportId": "report4",
+        "label": "cell 1",
+        "cellId": "cell1",
+        "cellDescription": "test cell 1"
+    },
+    {
+        "reportId": "report4",
+        "label": "cell 2",
+        "cellId": "cell2",
+        "cellDescription": "test cell 2"
+    },
+    {
+        "reportId": "report4",
+        "label": "cell 3",
+        "cellId": "cell3",
         "cellDescription": "test cell 3"
     },
     {
         "reportId": "report4",
         "label": "cell 4",
-        "cellId": "cell1",
+        "cellId": "cell4",
         "cellDescription": "test cell 4"
     }
 ]
