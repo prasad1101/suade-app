@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "suade-app"
+  "defaultProject": "suade-app",
+  "cli": {
+    "analytics": false
+  }
 }

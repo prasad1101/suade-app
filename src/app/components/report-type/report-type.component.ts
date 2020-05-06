@@ -19,10 +19,10 @@ export class ReportTypeComponent implements OnInit {
 
   constructor(private http: HttpClient) { }
 
-  reportData: any;
+  reports: any;
   cellData: any;
   reportCells: any;
-  aggregatorData: any;
+  aggregators: any;
   conditionData: any;
   fireElementData: any;
   metricData: any;
@@ -30,11 +30,6 @@ export class ReportTypeComponent implements OnInit {
   dataForReport: any;
 
   ngOnInit() {
-    this.activeDataLevelForReport == null;
-    this.activeCellLevelForReport == null;
-    this.level = undefined;
-    this.data = undefined;
-
     this.getDataForReport().subscribe(x => {
       this.dataForReport = x;
       console.log("data for report", this.dataForReport)
@@ -53,14 +48,12 @@ export class ReportTypeComponent implements OnInit {
 
     this.getReportData().subscribe(y => {
       console.log("report data", y)
-      this.reportData = y;
-      setTimeout(() => {
-        this.enableJQ()
-      }, 1000);
+      this.reports = y;
+
     })
 
     this.getAggregatorData().subscribe(x => {
-      this.aggregatorData = x;
+      this.aggregators = x;
       console.log("aggregator data", x);
     })
 
@@ -80,16 +73,6 @@ export class ReportTypeComponent implements OnInit {
   }
 
 
-
-
-
-  enableJQ() {
-    $('.button').click(function () {
-      $(this).toggleClass('expand')
-
-    });
-
-  }
 
   getReportData(): Observable<any> {
     return this.http.get('../../assets/report-types.json')
@@ -121,106 +104,56 @@ export class ReportTypeComponent implements OnInit {
   }
 
 
+  // Operations
 
-
-
-  level: any;
-  data: any;
-  cell: any;
-  activeCell: any;
-  signLevel = "+";
-  signData = "+";
-  activeCellLevelForReport: any;
-  activeDataLevelForReport: any;
-  toggleDataForSubData(level) {
-    if (this.activeDataLevelForReport == level) {
-      console.log("toggle collapse", level)
-      this.activeDataLevelForReport = null;
-    } else {
-      console.log("toggle expand", level)
-      this.activeDataLevelForReport = level;
-    }
+  tableConfig = {
+    reportId: null,
+    dataId: null,
+    cellId: null,
+    subCellId: null,
+    showSubcellsForReportId: null,
+    showSubDatacellsForReportId: null,
+    aggId: null
   }
 
-  toggleCellForSubCell(level) {
-
-    if (this.activeCellLevelForReport == level) {
-      console.log("toggle collapse", level)
-      this.activeCellLevelForReport = null;
-    } else {
-      console.log("toggle expand", level)
-      this.activeCellLevelForReport = level;
+  openReport(reportId) {
+    this.tableConfig = {
+      reportId: null,
+      dataId: null,
+      cellId: null,
+      subCellId: null,
+      showSubcellsForReportId: null,
+      showSubDatacellsForReportId: null,
+      aggId: null
     }
-
+    this.tableConfig.reportId = reportId;
   }
 
+  openDataForReport(reportId, dataId) {
+    this.tableConfig.reportId = reportId;
+    this.tableConfig.dataId = dataId;
+  }
+  openCellsForReport(reportId) {
 
-  toggleReport(reportName) {
-    if (this.level == reportName) {
-      this.level = undefined;
-      this.data = undefined;
-      this.activeDataLevelForReport == null;
-      this.activeCellLevelForReport == null;
-      this.signLevel = "+";
-    } else {
-      this.data = undefined;
-      this.level = reportName;
-      this.signLevel = "-";
-    }
+    this.tableConfig.showSubcellsForReportId = reportId;
   }
 
-
-  toggleData(activeCell, data, level) {
-    if (this.data == data) {
-      this.data = undefined
-      this.activeCell = undefined
-
-      this.signData = "+";
-    } else {
-      console.log("activecell,data>>>>>>>>", activeCell, data)
-      this.activeCell = activeCell;
-      this.data = data;
-      this.level = level;
-      this.signData = "-";
-    }
-    // this.level = undefined;
-
+  openSubDatacellsForReport(reportId) {
+    this.tableConfig.showSubDatacellsForReportId = reportId;
   }
 
-  serachText: string;
-  searchReport() {
-    var input, filter, table, tr, td, i, txtValue;
-    //input = document.getElementById("searchInput");
-    filter = this.serachText.toUpperCase();
-    table = document.getElementById("dataTable");
-    tr = table.getElementsByTagName("tr");
-    for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName("td")[0];
-      if (td) {
-        txtValue = td.textContent || td.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          tr[i].style.display = "";
-        } else {
-          tr[i].style.display = "none";
-        }
-      }
-    }
+  openSubCellsForReport(reportId, cellId) {
+    this.tableConfig.reportId = reportId;
+    this.tableConfig.cellId = cellId;
   }
-
-  activeToggleCell: any;
-  toggleCell(cell, level, activeCell) {
-    if (this.cell == cell) {
-      this.cell = undefined
-      this.activeToggleCell = undefined
-
-    } else {
-
-      this.cell = cell;
-      this.activeToggleCell = activeCell
-      this.level = level;
-      console.log("cell and level on cell click active cell", cell, level, this.activeToggleCell)
-    }
-
+  openSubCellDataForReport(reportId, subCellId) {
+    this.tableConfig.reportId = reportId;
+    this.tableConfig.subCellId = subCellId;
+    console.log(this.tableConfig)
   }
-
+  openAggData(reportId, aggId) {
+    this.tableConfig.reportId = reportId;
+    this.tableConfig.aggId = aggId;
+    console.log(this.tableConfig)
+  }
 }

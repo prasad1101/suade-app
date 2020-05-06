@@ -1,22 +1,25 @@
-[
-    {
-        "report_name": "report 1",
-        "cell": "cell 1",
-        "cell_description": "test cell 1"
+[{
+        "reportId": "report1",
+        "label": "cell 1",
+        "cellId": "cell1",
+        "cellDescription": "test cell 1"
     },
     {
-        "report_name": "report 1",
-        "cell": "cell 2",
-        "cell_description": "test cell 2"
+        "reportId": "report2",
+        "label": "cell 2",
+        "cellId": "cell2",
+        "cellDescription": "test cell 2"
     },
     {
-        "report_name": "report 1",
-        "cell": "cell 3",
-        "cell_description": "test cell 3"
+        "reportId": "report2",
+        "label": "cell 3",
+        "cellId": "cell1",
+        "cellDescription": "test cell 3"
     },
     {
-        "report_name": "report 1",
-        "cell": "cell 4",
-        "cell_description": "test cell 4"
+        "reportId": "report4",
+        "label": "cell 4",
+        "cellId": "cell1",
+        "cellDescription": "test cell 4"
     }
 ]

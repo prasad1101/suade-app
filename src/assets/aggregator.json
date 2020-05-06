@@ -1,28 +1,27 @@
-[
-    {
-        "report_name": "report 1",
-        "cell_name": "Aggregator",
+[{
+        "reportId": "report 1",
+        "subCellId": "aggregator",
         "cell": "cell 1",
-        "aggregator_name": "aggregator_name 1 r1",
-        "aggregator_desc": "aggregator_desc 1 r1"
+        "cell1": "aggregator_name 1 r1",
+        "cell2": "aggregator_desc 1 r1"
     },
     {
-        "report_name": "report 1",
-        "cell_name": "Aggregator",
+        "reportId": "report 1",
+        "subCellId": "aggregator",
         "cell": "cell 1",
-        "aggregator_name": "aggregator_name 2 r1",
-        "aggregator_desc": "aggregator_desc 2 r1"
+        "cell1": "aggregator_name 2 r1",
+        "cell2": "aggregator_desc 2 r1"
     },
     {
-        "report_name": "report 2",
-        "cell_name": "Aggregator",
-        "aggregator_name": "aggregator_name 1 r2",
-        "aggregator_desc": "aggregator_desc 1 r2"
+        "reportId": "report 2",
+        "subCellId": "aggregator",
+        "cell1": "aggregator_name 1 r2",
+        "cell2": "aggregator_desc 1 r2"
     },
     {
-        "report_name": "report 2",
-        "cell_name": "Aggregator",
-        "aggregator_name": "aggregator_name 2 r2",
-        "aggregator_desc": "aggregator_desc 2 r2"
+        "reportId": "report 2",
+        "subCellId": "aggregator",
+        "cell1": "aggregator_name 2 r2",
+        "cell2": "aggregator_desc 2 r2"
     }
 ]

@@ -1,32 +1,23 @@
-[
-  {
-    "report_name": "report 1",
-    "data_name": "data 1",
-    "cell": "cell 1",
-    "data_description": "test data 1"
-  },
-  {
-    "report_name": "report 2",
-    "data_name": "data 2",
-    "cell": "cell 2",
-    "data_description": "test data 2"
-  },
-  {
-    "report_name": "report 3",
-    "data_name": "data 3",
-    "cell": "cell 3",
-    "data_description": "test data 3"
-  },
-  {
-    "report_name": "report 4",
-    "data_name": "data 4",
-    "cell": "cell 4",
-    "data_description": "test data 4"
-  },
-  {
-    "report_name": "report 5",
-    "data_name": "data 5",
-    "cell": "cell 5",
-    "data_description": "test data 5"
-  }
+[{
+        "reportName": "report 1",
+
+        "reportId": "report1"
+    },
+    {
+        "reportName": "report 2",
+        "reportId": "report2"
+
+    },
+    {
+        "reportName": "report 3",
+        "reportId": "report3"
+    },
+    {
+        "reportName": "report 4",
+        "reportId": "report4"
+    },
+    {
+        "reportName": "report 5",
+        "reportId": "report5"
+    }
 ]
