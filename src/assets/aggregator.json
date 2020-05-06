@@ -2,12 +2,14 @@
     {
         "report_name": "report 1",
         "cell_name": "Aggregator",
+        "cell": "cell 1",
         "aggregator_name": "aggregator_name 1 r1",
         "aggregator_desc": "aggregator_desc 1 r1"
     },
     {
         "report_name": "report 1",
         "cell_name": "Aggregator",
+        "cell": "cell 1",
         "aggregator_name": "aggregator_name 2 r1",
         "aggregator_desc": "aggregator_desc 2 r1"
     },

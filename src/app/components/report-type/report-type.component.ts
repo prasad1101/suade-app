@@ -26,12 +26,24 @@ export class ReportTypeComponent implements OnInit {
   conditionData: any;
   fireElementData: any;
   metricData: any;
+  cellForReport: any;
+  dataForReport: any;
 
   ngOnInit() {
     this.activeDataLevelForReport == null;
     this.activeCellLevelForReport == null;
     this.level = undefined;
     this.data = undefined;
+
+    this.getDataForReport().subscribe(x => {
+      this.dataForReport = x;
+      console.log("data for report", this.dataForReport)
+    })
+
+    this.getCellsForReport().subscribe(x => {
+      this.cellForReport = x;
+      console.log("cell for report", this.cellForReport)
+    })
 
     this.getCellData().subscribe(x => {
       console.log("cellData", x)
@@ -100,6 +112,14 @@ export class ReportTypeComponent implements OnInit {
     return this.http.get('../../assets/metric.json')
   }
 
+  getCellsForReport(): Observable<any> {
+    return this.http.get('../../assets/cells.json')
+  }
+
+  getDataForReport(): Observable<any> {
+    return this.http.get('../../assets/data.json')
+  }
+
 
 
 
@@ -107,6 +127,7 @@ export class ReportTypeComponent implements OnInit {
   level: any;
   data: any;
   cell: any;
+  activeCell: any;
   signLevel = "+";
   signData = "+";
   activeCellLevelForReport: any;
@@ -149,12 +170,15 @@ export class ReportTypeComponent implements OnInit {
   }
 
 
-  toggleData(data, level) {
+  toggleData(activeCell, data, level) {
     if (this.data == data) {
       this.data = undefined
+      this.activeCell = undefined
+
       this.signData = "+";
     } else {
-      console.log("level,data", data)
+      console.log("activecell,data>>>>>>>>", activeCell, data)
+      this.activeCell = activeCell;
       this.data = data;
       this.level = level;
       this.signData = "-";
@@ -183,13 +207,18 @@ export class ReportTypeComponent implements OnInit {
     }
   }
 
-  toggleCell(cell, level) {
+  activeToggleCell: any;
+  toggleCell(cell, level, activeCell) {
     if (this.cell == cell) {
       this.cell = undefined
+      this.activeToggleCell = undefined
+
     } else {
-      console.log("cell and level on cell click", cell, level)
+
       this.cell = cell;
+      this.activeToggleCell = activeCell
       this.level = level;
+      console.log("cell and level on cell click active cell", cell, level, this.activeToggleCell)
     }
 
   }

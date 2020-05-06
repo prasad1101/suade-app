@@ -2,12 +2,14 @@
     {
         "report_name": "report 1",
         "condition_name": "condition_name 1",
+        "cell": "cell 1",
         "cell_name": "Condition",
         "condition_desc": "condition_desc 1"
     },
     {
         "report_name": "report 1",
         "cell_name": "Condition",
+        "cell": "cell 1",
         "condition_name": "condition_name 2",
         "condition_desc": "condition_desc 2"
     },
