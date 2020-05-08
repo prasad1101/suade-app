@@ -19,10 +19,10 @@ export class ReportTypeComponent implements OnInit {
 
   constructor(private http: HttpClient) { }
 
-  reports: any;
+  reportData: any;
   cellData: any;
   reportCells: any;
-  aggregators: any;
+  aggregatorData: any;
   conditionData: any;
   fireElementData: any;
   metricData: any;
@@ -30,6 +30,11 @@ export class ReportTypeComponent implements OnInit {
   dataForReport: any;
 
   ngOnInit() {
+    this.activeDataLevelForReport == null;
+    this.activeCellLevelForReport == null;
+    this.level = undefined;
+    this.data = undefined;
+
     this.getDataForReport().subscribe(x => {
       this.dataForReport = x;
       console.log("data for report", this.dataForReport)
@@ -48,12 +53,14 @@ export class ReportTypeComponent implements OnInit {
 
     this.getReportData().subscribe(y => {
       console.log("report data", y)
-      this.reports = y;
-
+      this.reportData = y;
+      setTimeout(() => {
+        this.enableJQ()
+      }, 1000);
     })
 
     this.getAggregatorData().subscribe(x => {
-      this.aggregators = x;
+      this.aggregatorData = x;
       console.log("aggregator data", x);
     })
 
@@ -74,12 +81,22 @@ export class ReportTypeComponent implements OnInit {
 
 
 
+
+
+  enableJQ() {
+    $('.button').click(function () {
+      $(this).toggleClass('expand')
+
+    });
+
+  }
+
   getReportData(): Observable<any> {
-    return this.http.get('../../assets/report-type.json')
+    return this.http.get('../../assets/report-types.json')
   }
 
   getCellData(): Observable<any> {
-    return this.http.get('../../assets/report-cell-details.json')
+    return this.http.get('../../assets/report-cells.json')
   }
 
   getAggregatorData(): Observable<any> {
@@ -94,20 +111,81 @@ export class ReportTypeComponent implements OnInit {
   getMetricData(): Observable<any> {
     return this.http.get('../../assets/metric.json')
   }
-  getData(): Observable<any> {
-    return this.http.get('../../assets/Data.json')
-  }
-
 
   getCellsForReport(): Observable<any> {
-    return this.http.get('../../assets/report-cell.json')
+    return this.http.get('../../assets/cells.json')
   }
 
   getDataForReport(): Observable<any> {
-    return this.http.get('../../assets/report-data.json')
+    return this.http.get('../../assets/data.json')
   }
 
-  //for search
+
+
+
+
+  level: any;
+  data: any;
+  cell: any;
+  activeCell: any;
+  signLevel = "+";
+  signData = "+";
+  activeCellLevelForReport: any;
+  activeDataLevelForReport: any;
+  toggleDataForSubData(level) {
+    if (this.activeDataLevelForReport == level) {
+      console.log("toggle collapse", level)
+      this.activeDataLevelForReport = null;
+    } else {
+      console.log("toggle expand", level)
+      this.activeDataLevelForReport = level;
+    }
+  }
+
+  toggleCellForSubCell(level) {
+
+    if (this.activeCellLevelForReport == level) {
+      console.log("toggle collapse", level)
+      this.activeCellLevelForReport = null;
+    } else {
+      console.log("toggle expand", level)
+      this.activeCellLevelForReport = level;
+    }
+
+  }
+
+
+  toggleReport(reportName) {
+    if (this.level == reportName) {
+      this.level = undefined;
+      this.data = undefined;
+      this.activeDataLevelForReport == null;
+      this.activeCellLevelForReport == null;
+      this.signLevel = "+";
+    } else {
+      this.data = undefined;
+      this.level = reportName;
+      this.signLevel = "-";
+    }
+  }
+
+
+  toggleData(activeCell, data, level) {
+    if (this.data == data) {
+      this.data = undefined
+      this.activeCell = undefined
+
+      this.signData = "+";
+    } else {
+      console.log("activecell,data>>>>>>>>", activeCell, data)
+      this.activeCell = activeCell;
+      this.data = data;
+      this.level = level;
+      this.signData = "-";
+    }
+    // this.level = undefined;
+
+  }
 
   serachText: string;
   searchReport() {
@@ -129,80 +207,21 @@ export class ReportTypeComponent implements OnInit {
     }
   }
 
-  // Operations
+  activeToggleCell: any;
+  toggleCell(cell, level, activeCell) {
 
-  tableConfig = {
-    reportId: null,
-    dataId: null,
-    cellId: null,
-    subCellId: null,
-    showSubcellsForReportId: null,
-    showSubDatacellsForReportId: null,
-    aggId: null
-  }
+    if (this.cell == cell) {
+      this.cell = undefined
+      this.activeToggleCell = undefined
 
-  openReport(reportId) {
-    if (reportId === this.tableConfig.reportId) {
-      this.tableConfig.reportId = null;
     } else {
-      this.tableConfig = {
-        reportId: null,
-        dataId: null,
-        cellId: null,
-        subCellId: null,
-        showSubcellsForReportId: null,
-        showSubDatacellsForReportId: null,
-        aggId: null
-      }
-      this.tableConfig.reportId = reportId;
+
+      this.cell = cell;
+      this.activeToggleCell = activeCell
+      this.level = level;
+      console.log("Cell", cell, "level", level, "activeToggleCell", this.activeToggleCell, "activeCellLevelForReport", this.activeCellLevelForReport)
     }
 
   }
 
-  openDataForReport(reportId, dataId) {
-    this.tableConfig.reportId = reportId;
-    this.tableConfig.dataId = dataId;
-  }
-  openCellsForReport(reportId) {
-    if (reportId === this.tableConfig.showSubcellsForReportId) {
-      this.tableConfig.showSubcellsForReportId = null;
-    } else {
-      this.tableConfig.showSubcellsForReportId = reportId;
-    }
-
-  }
-
-  openSubDatacellsForReport(reportId) {
-    if (reportId === this.tableConfig.showSubDatacellsForReportId) {
-      this.tableConfig.showSubDatacellsForReportId = null;
-    } else {
-      this.tableConfig.showSubDatacellsForReportId = reportId;
-    }
-
-  }
-
-  openSubCellsForReport(reportId, cellId) {
-    if (cellId === this.tableConfig.cellId) {
-      this.tableConfig.cellId = null
-    } else {
-      this.tableConfig.reportId = reportId;
-      this.tableConfig.cellId = cellId;
-    }
-
-  }
-  openSubCellDataForReport(reportId, subCellId) {
-    if (subCellId === this.tableConfig.subCellId) {
-      this.tableConfig.subCellId = null
-    } else {
-      this.tableConfig.reportId = reportId;
-      this.tableConfig.subCellId = subCellId;
-      console.log(this.tableConfig)
-    }
-
-  }
-  openAggData(reportId, aggId) {
-    this.tableConfig.reportId = reportId;
-    this.tableConfig.aggId = aggId;
-    console.log(this.tableConfig)
-  }
 }

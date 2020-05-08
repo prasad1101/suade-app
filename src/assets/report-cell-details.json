@@ -1,0 +1,28 @@
+[{
+        "reportId": "report1",
+        "subCellId": "aggregator",
+        "cellId": "cell1",
+        "value": "Test description aggregator "
+    },
+    {
+        "reportId": "report1",
+        "subCellId": "metric",
+        "cellId": "cell1",
+        "value": "Test description metric "
+    },
+    {
+        "reportId": "report1",
+        "subCellId": "condition",
+        "cellId": "cell1",
+        "value": "Test description condition"
+    },
+    {
+        "reportId": "report1",
+        "subCellId": "fireElement",
+        "cellId": "cell1",
+        "value": "Test description fire element"
+    }
+]
+        
+    
+        

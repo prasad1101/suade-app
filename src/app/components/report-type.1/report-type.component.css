@@ -1,0 +1,55 @@
+table, tr, td, th {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+tr.button {
+    cursor: pointer;
+}
+
+.button .sign:after {
+    content: "+";
+    /* display: inline-block; */
+}
+
+.button.expand .sign:after {
+    content: "-";
+}
+
+tr.button2 {
+    cursor: pointer;
+}
+
+.button2 .sign:after {
+    content: "+";
+    /* display: inline-block; */
+}
+
+.button2.expand .sign:after {
+    content: "-";
+}
+
+tr.button3 {
+    cursor: pointer;
+}
+
+.button3 .sign:after {
+    content: "+";
+    /* display: inline-block; */
+}
+
+.button3.expand .sign:after {
+    content: "-";
+}
+
+.plus:after {
+    content: "+";
+}
+
+.minus:after {
+    content: "-";
+}
+
+/* .button {
+    display: contents;
+} */

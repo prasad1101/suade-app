@@ -1,52 +1,29 @@
-[
-    {
-        "report_name": "report 1",
-        "condition_name": "condition_name 1",
-        "cell_name": "Condition",
-        "condition_desc": "condition_desc 1"
+[{
+        "reportId": "report 1",
+        "subCellId": "Condition",
+        "cellId": "Cell1",
+        "cell1": "Condition 1",
+        "cell2": "Test condition description 1"
     },
     {
-        "report_name": "report 1",
-        "cell_name": "Condition",
-        "condition_name": "condition_name 2",
-        "condition_desc": "condition_desc 2"
+        "reportId": "report 1",
+        "subCellId": "Condition",
+        "cellId": "Cell1",
+        "cell1": "Condition 2",
+        "cell2": "Test condition description 2"
     },
     {
-        "report_name": "report 2",
-        "cell_name": "Condition",
-        "condition_name": "condition_name 1",
-        "condition_desc": "condition_desc 1"
+        "reportId": "report 1",
+        "subCellId": "Condition",
+        "cellId": "Cell1",
+        "cell1": "Condition 3",
+        "cell2": "Test condition description 3"
     },
     {
-        "report_name": "report 2",
-        "cell_name": "Condition",
-        "condition_name": "condition_name 2",
-        "condition_desc": "condition_desc 2"
-    }
-    ,
-    {
-        "report_name": "report 3",
-        "cell_name": "Condition",
-        "condition_name": "condition_name 1",
-        "condition_desc": "condition_desc 1"
-    },
-    {
-        "report_name": "report 3",
-        "cell_name": "Condition",
-        "condition_name": "condition_name 2",
-        "condition_desc": "condition_desc 2"
-    }
-    ,
-    {
-        "report_name": "report 4",
-        "cell_name": "Condition",
-        "condition_name": "condition_name 1",
-        "condition_desc": "condition_desc 1"
-    },
-    {
-        "report_name": "report 4",
-        "cell_name": "Condition",
-        "condition_name": "condition_name 2",
-        "condition_desc": "condition_desc 2"
+        "reportId": "report 1",
+        "subCellId": "Condition",
+        "cellId": "Cell1",
+        "cell1": "Condition 4",
+        "cell2": "Test condition description 4"
     }
 ]
