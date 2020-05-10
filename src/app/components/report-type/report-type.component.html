@@ -24,7 +24,7 @@
         <tbody>
             <ng-container *ngFor="let report of reports">
                 <tr>
-                    <td >
+                    <td>
                         <button (click)="openReport(report.reportId)">
                             {{tableConfig.reportId == report.reportId ? '-' : '+'}}
                         </button> {{report.reportName}}
@@ -37,7 +37,7 @@
                 <ng-container *ngIf="tableConfig.reportId === report.reportId">
 
                     <tr style="background-color: #adbdbd;" *ngIf="tableConfig.reportId">
-                        <td style="padding-left: 30px;" >
+                        <td style="padding-left: 30px;">
                             <button (click)="openSubDatacellsForReport(tableConfig.reportId)">
                                 {{tableConfig.showSubDatacellsForReportId == tableConfig.reportId ? '-' : '+'}}
                             </button>Data
@@ -49,12 +49,12 @@
 
                         <ng-container *ngFor="let oneData of dataForReport">
 
-                            <tr *ngIf="tableConfig.reportId === oneData.reportId">
-                                <td style="padding-left: 45px;background-color: #c1c1c1;" >
+                            <tr style="background-color: #c1c1c1;" *ngIf="tableConfig.reportId === oneData.reportId">
+                                <td style="padding-left: 45px;">
                                     <!-- <button (click)="openDataForReport(oneData.reportId, oneData.id)">
                                         {{tableConfig.dataId == oneData.id ? '-' : '+'}}
                                     </button> -->
-                                     {{oneData.label}}
+                                    {{oneData.label}}
                                 </td>
                                 <td> {{oneData.reportDesc}}</td>
                             </tr>
@@ -65,7 +65,7 @@
 
 
                     <tr style="background-color: #adbdbd;" *ngIf="tableConfig.reportId">
-                        <td style="padding-left: 30px;" >
+                        <td style="padding-left: 30px;">
                             <button (click)="openCellsForReport(tableConfig.reportId)">
                                 {{tableConfig.showSubcellsForReportId == tableConfig.reportId ? '-' : '+'}}
                             </button>Cell
@@ -76,8 +76,8 @@
                     <ng-container *ngIf="tableConfig.showSubcellsForReportId == tableConfig.reportId">
                         <ng-container *ngFor="let oneCell of cellForReport">
 
-                            <tr *ngIf="tableConfig.reportId === oneCell.reportId">
-                                <td style="padding-left: 45px;background-color: #c1c1c1;" >
+                            <tr style="background-color: #c1c1c1" *ngIf="tableConfig.reportId === oneCell.reportId">
+                                <td style="padding-left: 45px;;">
                                     <button (click)="openSubCellsForReport(oneCell.reportId, oneCell.cellId)">
                                         {{tableConfig.cellId == oneCell.cellId ? '-' : '+'}}
                                     </button> {{oneCell.label}}
@@ -86,63 +86,70 @@
                             </tr>
                             <!-- for sub cells agg, condn -->
                             <ng-container
-                                *ngIf="tableConfig.reportId === oneCell.reportId&& tableConfig.cellId === oneCell.cellId">
-                                <ng-container *ngFor="let subCell of cellData">
+                                *ngIf="tableConfig.reportId === oneCell.reportId && tableConfig.cellId === oneCell.cellId">
+                                <ng-container *ngFor="let subCell of cellData; let ind = index;">
 
-                                    <tr *ngIf="tableConfig.cellId === subCell.cellId">
-                                        <td style="padding-left: 60px;background-color: #a9a0a0;" >
+                                    <tr style="background-color: #a9a0a0;"
+                                        *ngIf="tableConfig.cellId === subCell.cellId && tableConfig.reportId === subCell.reportId">
+                                        <td style="padding-left: 60px;">
                                             <button
-                                                (click)="openSubCellDataForReport(subCell.reportId, subCell.subCellId)">
+                                                (click)="openSubCellDataForReport(subCell.reportId, subCell.subCellId, subCell.cellId)">
                                                 {{tableConfig.subCellId == subCell.subCellId ? '-' : '+'}}
                                             </button> {{subCell.subCellId}}
                                         </td>
                                         <td>{{subCell.value}}</td>
                                     </tr>
+                                    <!-- aggrigators data -->
+                                    <ng-container *ngFor="let agg of aggregators">
+                                        <tr
+                                            *ngIf="tableConfig.reportId === agg.reportId && tableConfig.reportId === subCell.reportId && subCell.cellId === agg.cellId && agg.subCellId === subCell.subCellId && agg.subCellId === tableConfig.subCellId  && agg.cellId === tableConfig.cellId">
 
-                                    <ng-container
-                                        *ngIf="tableConfig.reportId === subCell.reportId && subCell.subCellId === tableConfig.subCellId && tableConfig.subCellId === 'aggregator'">
+                                            <td>
+                                                {{agg.cell1}} {{agg.cellId}}
+                                            </td>
+                                            <td>{{agg.cell2}}</td>
 
-                                        <tr *ngFor="let agg of aggregators">
+                                        </tr>
+                                    </ng-container>
+                                    <!-- aggrigators data -->
+                                    <!-- fire element data -->
+                                    <ng-container *ngFor="let agg of fireElementData">
+
+                                        <tr
+                                            *ngIf="tableConfig.reportId === agg.reportId && tableConfig.reportId === subCell.reportId && subCell.cellId === agg.cellId && agg.subCellId === subCell.subCellId && agg.subCellId === tableConfig.subCellId && agg.cellId === tableConfig.cellId">
                                             <td>
                                                 {{agg.cell1}}
                                             </td>
                                             <td>{{agg.cell2}}</td>
                                         </tr>
                                     </ng-container>
-                                    <ng-container
-                                        *ngIf="tableConfig.reportId === subCell.reportId && subCell.subCellId === tableConfig.subCellId && tableConfig.subCellId === 'fireElement'">
+                                    <!-- fire element data -->
+                                    <!-- metri data -->
+                                    <ng-container *ngFor="let agg of metricData">
 
-                                        <tr *ngFor="let agg of fireElementData">
+                                        <tr
+                                            *ngIf="tableConfig.reportId === agg.reportId && tableConfig.reportId === subCell.reportId && subCell.cellId === agg.cellId && agg.subCellId === subCell.subCellId && agg.subCellId === tableConfig.subCellId && agg.cellId === tableConfig.cellId">
                                             <td>
                                                 {{agg.cell1}}
                                             </td>
                                             <td>{{agg.cell2}}</td>
                                         </tr>
                                     </ng-container>
+                                    <!-- metric data -->
+                                    <!-- condition data -->
+                                    <ng-container *ngFor="let agg of conditionData">
 
-                                    <ng-container
-                                        *ngIf="tableConfig.reportId === subCell.reportId && subCell.subCellId === tableConfig.subCellId && tableConfig.subCellId === 'metric'">
-
-                                        <tr *ngFor="let agg of metricData">
+                                        <tr
+                                            *ngIf="tableConfig.reportId === agg.reportId && tableConfig.reportId === subCell.reportId && subCell.cellId === agg.cellId && agg.subCellId === subCell.subCellId && agg.subCellId === tableConfig.subCellId && agg.cellId === tableConfig.cellId">
                                             <td>
                                                 {{agg.cell1}}
                                             </td>
                                             <td>{{agg.cell2}}</td>
                                         </tr>
                                     </ng-container>
-
-                                    <ng-container
-                                        *ngIf="tableConfig.reportId === subCell.reportId && subCell.subCellId === tableConfig.subCellId && tableConfig.subCellId === 'condition'">
-
-                                        <tr *ngFor="let agg of conditionData">
-                                            <td>
-                                                {{agg.cell1}}
-                                            </td>
-                                            <td>{{agg.cell2}}</td>
-                                        </tr>
-                                    </ng-container>
-
+                                    <!-- condition data -->
                                 </ng-container>
+
                             </ng-container>
 
 

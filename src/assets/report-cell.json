@@ -47,23 +47,28 @@
         "cellId": "cell4",
         "cellDescription": "Test description cell 1.4"
     },
-    
     {
         "reportId": "report4",
-        "label": "Cell 6",
-        "cellId": "cell6",
-        "cellDescription": "Test description cell 6"
+        "label": "Cell 1",
+        "cellId": "cell1",
+        "cellDescription": "Test description cell 1"
     },
     {
         "reportId": "report4",
-        "label": "Cell 7",
-        "cellId": "cell7",
-        "cellDescription": "Test description cell 7"
+        "label": "Cell 2",
+        "cellId": "cell2",
+        "cellDescription": "Test description cell 2"
     },
     {
         "reportId": "report4",
-        "label": "Cell 8",
-        "cellId": "cell8",
-        "cellDescription": "Test description cell 8"
+        "label": "Cell 3",
+        "cellId": "cell3",
+        "cellDescription": "Test description cell 3"
+    },
+    {
+        "reportId": "report4",
+        "label": "Cell 4",
+        "cellId": "cell4",
+        "cellDescription": "Test description cell 4"
     }
 ]

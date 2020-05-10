@@ -138,11 +138,15 @@ export class ReportTypeComponent implements OnInit {
     subCellId: null,
     showSubcellsForReportId: null,
     showSubDatacellsForReportId: null,
-    aggId: null
+    aggId: null,
+    subAggId: null
   }
 
   openReport(reportId) {
     if (reportId === this.tableConfig.reportId) {
+      this.tableConfig.subCellId = null
+      this.tableConfig.subCellId = null;
+      this.tableConfig.subAggId = null;
       this.tableConfig.reportId = null;
     } else {
       this.tableConfig = {
@@ -152,7 +156,8 @@ export class ReportTypeComponent implements OnInit {
         subCellId: null,
         showSubcellsForReportId: null,
         showSubDatacellsForReportId: null,
-        aggId: null
+        aggId: null,
+        subAggId: null
       }
       this.tableConfig.reportId = reportId;
     }
@@ -165,6 +170,9 @@ export class ReportTypeComponent implements OnInit {
   }
   openCellsForReport(reportId) {
     if (reportId === this.tableConfig.showSubcellsForReportId) {
+      this.tableConfig.subCellId = null
+      this.tableConfig.subCellId = null;
+      this.tableConfig.subAggId = null;
       this.tableConfig.showSubcellsForReportId = null;
     } else {
       this.tableConfig.showSubcellsForReportId = reportId;
@@ -183,6 +191,9 @@ export class ReportTypeComponent implements OnInit {
 
   openSubCellsForReport(reportId, cellId) {
     if (cellId === this.tableConfig.cellId) {
+      this.tableConfig.subCellId = null
+      this.tableConfig.subCellId = null;
+      this.tableConfig.subAggId = null;
       this.tableConfig.cellId = null
     } else {
       this.tableConfig.reportId = reportId;
@@ -190,13 +201,16 @@ export class ReportTypeComponent implements OnInit {
     }
 
   }
-  openSubCellDataForReport(reportId, subCellId) {
+  openSubCellDataForReport(reportId, subCellId, subAggId) {
     if (subCellId === this.tableConfig.subCellId) {
       this.tableConfig.subCellId = null
+      this.tableConfig.subCellId = null;
+      this.tableConfig.subAggId = null;
     } else {
       this.tableConfig.reportId = reportId;
       this.tableConfig.subCellId = subCellId;
-      console.log(this.tableConfig)
+      this.tableConfig.subAggId = subAggId;
+      console.log("sub agg>>>>>>", this.tableConfig)
     }
 
   }

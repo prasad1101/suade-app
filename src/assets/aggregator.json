@@ -1,10 +1,121 @@
-[{
-        "reportId": "report 1",
-        "subCellId": "Aggregator",
+[
+    {
+        "reportId": "report1",
+        "subCellId": "aggregator",
         "cellId": "cell1",
         "cell1": "Aggregator 1",
         "cell2": "Test aggregator 1 description "
+    },
+    {
+        "reportId": "report1",
+        "subCellId": "aggregator",
+        "cellId": "cell1",
+        "cell1": "Aggregator 2",
+        "cell2": "Test aggregator 2 description "
+    },
+    {
+        "reportId": "report1",
+        "subCellId": "aggregator",
+        "cellId": "cell2",
+        "cell1": "Aggregator 1",
+        "cell2": "Test aggregator 1 description "
+    },
+    {
+        "reportId": "report1",
+        "subCellId": "aggregator",
+        "cellId": "cell3",
+        "cell1": "Aggregator 1",
+        "cell2": "Test aggregator 1 description "
+    },
+    {
+        "reportId": "report1",
+        "subCellId": "aggregator",
+        "cellId": "cell4",
+        "cell1": "Aggregator 1",
+        "cell2": "Test aggregator 1 description "
+    },
+    {
+        "reportId": "report2",
+        "subCellId": "aggregator",
+        "cellId": "cell1",
+        "cell1": "Aggregator 1",
+        "cell2": "Test aggregator 1 description "
+    },
+    {
+        "reportId": "report2",
+        "subCellId": "aggregator",
+        "cellId": "cell2",
+        "cell1": "Aggregator 1",
+        "cell2": "Test aggregator 1 description "
+    },
+    {
+        "reportId": "report2",
+        "subCellId": "aggregator",
+        "cellId": "cell3",
+        "cell1": "Aggregator 1",
+        "cell2": "Test aggregator 1 description "
+    },
+    {
+        "reportId": "report2",
+        "subCellId": "aggregator",
+        "cellId": "cell4",
+        "cell1": "Aggregator 1",
+        "cell2": "Test aggregator 1 description "
+    },
+    {
+        "reportId": "report3",
+        "subCellId": "aggregator",
+        "cellId": "cell1",
+        "cell1": "Aggregator 1",
+        "cell2": "Test aggregator 1 description "
+    },
+    {
+        "reportId": "report3",
+        "subCellId": "aggregator",
+        "cellId": "cell2",
+        "cell1": "Aggregator 1",
+        "cell2": "Test aggregator 1 description "
+    },
+    {
+        "reportId": "report3",
+        "subCellId": "aggregator",
+        "cellId": "cell3",
+        "cell1": "Aggregator 1",
+        "cell2": "Test aggregator 1 description "
+    },
+    {
+        "reportId": "report3",
+        "subCellId": "aggregator",
+        "cellId": "cell4",
+        "cell1": "Aggregator 1",
+        "cell2": "Test aggregator 1 description "
+    },
+    {
+        "reportId": "report4",
+        "subCellId": "aggregator",
+        "cellId": "cell1",
+        "cell1": "Aggregator 1",
+        "cell2": "Test aggregator 1 description "
+    },
+    {
+        "reportId": "report4",
+        "subCellId": "aggregator",
+        "cellId": "cell2",
+        "cell1": "Aggregator 1",
+        "cell2": "Test aggregator 1 description "
+    },
+    {
+        "reportId": "report4",
+        "subCellId": "aggregator",
+        "cellId": "cell3",
+        "cell1": "Aggregator 1",
+        "cell2": "Test aggregator 1 description "
+    },
+    {
+        "reportId": "report4",
+        "subCellId": "aggregator",
+        "cellId": "cell4",
+        "cell1": "Aggregator 1",
+        "cell2": "Test aggregator 1 description "
     }
-    
-        
-    ]
+]

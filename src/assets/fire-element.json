@@ -1,15 +1,121 @@
-[{
-    "reportId": "report 1",
-    "subcellId": "Fire element",
-    "cellId":"Cell 1",
-    "cell1": "Fire element 1",
-    "cell2": "Test description Fire element 1"
-},
-{
-    "reportId": "report 1",
-    "subCellId": "Fire element " ,
-    "cellId": "Cell 1",
-    "cell1": "Fire element 2",
-    "cell2": "Test description fire element 2"
-}
+[
+    {
+        "reportId": "report1",
+        "subCellId": "fireElement",
+        "cellId": "cell1",
+        "cell1": "fireElement 1",
+        "cell2": "Test fireElement 1 description "
+    },
+    {
+        "reportId": "report1",
+        "subCellId": "fireElement",
+        "cellId": "cell1",
+        "cell1": "fireElement 2",
+        "cell2": "Test fireElement 2 description "
+    },
+    {
+        "reportId": "report1",
+        "subCellId": "fireElement",
+        "cellId": "cell2",
+        "cell1": "fireElement 1",
+        "cell2": "Test fireElement 1 description "
+    },
+    {
+        "reportId": "report1",
+        "subCellId": "fireElement",
+        "cellId": "cell3",
+        "cell1": "fireElement 1",
+        "cell2": "Test fireElement 1 description "
+    },
+    {
+        "reportId": "report1",
+        "subCellId": "fireElement",
+        "cellId": "cell4",
+        "cell1": "fireElement 1",
+        "cell2": "Test fireElement 1 description "
+    },
+    {
+        "reportId": "report2",
+        "subCellId": "fireElement",
+        "cellId": "cell1",
+        "cell1": "fireElement 1",
+        "cell2": "Test fireElement 1 description "
+    },
+    {
+        "reportId": "report2",
+        "subCellId": "fireElement",
+        "cellId": "cell2",
+        "cell1": "fireElement 1",
+        "cell2": "Test fireElement 1 description "
+    },
+    {
+        "reportId": "report2",
+        "subCellId": "fireElement",
+        "cellId": "cell3",
+        "cell1": "fireElement 1",
+        "cell2": "Test fireElement 1 description "
+    },
+    {
+        "reportId": "report2",
+        "subCellId": "fireElement",
+        "cellId": "cell4",
+        "cell1": "fireElement 1",
+        "cell2": "Test fireElement 1 description "
+    },
+    {
+        "reportId": "report3",
+        "subCellId": "fireElement",
+        "cellId": "cell1",
+        "cell1": "fireElement 1",
+        "cell2": "Test fireElement 1 description "
+    },
+    {
+        "reportId": "report3",
+        "subCellId": "fireElement",
+        "cellId": "cell2",
+        "cell1": "fireElement 1",
+        "cell2": "Test fireElement 1 description "
+    },
+    {
+        "reportId": "report3",
+        "subCellId": "fireElement",
+        "cellId": "cell3",
+        "cell1": "fireElement 1",
+        "cell2": "Test fireElement 1 description "
+    },
+    {
+        "reportId": "report3",
+        "subCellId": "fireElement",
+        "cellId": "cell4",
+        "cell1": "fireElement 1",
+        "cell2": "Test fireElement 1 description "
+    },
+    {
+        "reportId": "report4",
+        "subCellId": "fireElement",
+        "cellId": "cell1",
+        "cell1": "fireElement 1",
+        "cell2": "Test fireElement 1 description "
+    },
+    {
+        "reportId": "report4",
+        "subCellId": "fireElement",
+        "cellId": "cell2",
+        "cell1": "fireElement 1",
+        "cell2": "Test fireElement 1 description "
+    },
+    {
+        "reportId": "report4",
+        "subCellId": "fireElement",
+        "cellId": "cell3",
+        "cell1": "fireElement 1",
+        "cell2": "Test fireElement 1 description "
+    },
+    {
+        "reportId": "report4",
+        "subCellId": "fireElement",
+        "cellId": "cell4",
+        "cell1": "fireElement 1",
+        "cell2": "Test fireElement 1 description "
+    }
 ]
