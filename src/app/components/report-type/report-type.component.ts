@@ -4,6 +4,7 @@ import 'datatables.net';
 import 'datatables.net-bs4';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { DalService } from 'src/app/services/dal.service';
 
 @Component({
   selector: 'app-report-type',
@@ -17,95 +18,53 @@ export class ReportTypeComponent implements OnInit {
 
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private dal: DalService) { }
+
+
 
   reports: any;
-  cellData: any;
-  reportCells: any;
-  aggregators: any;
-  conditionData: any;
-  fireElementData: any;
-  metricData: any;
   cellForReport: any;
   dataForReport: any;
+  subCellForReport: any;
 
   ngOnInit() {
-    this.getDataForReport().subscribe(x => {
+
+    this.getReport();
+
+
+  }
+
+
+
+  getReport() {
+    return this.dal.getReportData().subscribe(x => {
+      console.log("report data", x)
+      this.reports = x;
+    })
+  }
+  getDataForReport(reportId) {
+    this.dal.getDataForReport(reportId).subscribe(x => {
       this.dataForReport = x;
       console.log("data for report", this.dataForReport)
     })
+  }
 
-    this.getCellsForReport().subscribe(x => {
+  getCellForReport(reportId) {
+    this.dal.getCellForReport(reportId).subscribe(x => {
       this.cellForReport = x;
       console.log("cell for report", this.cellForReport)
     })
+  }
 
-    this.getCellData().subscribe(x => {
-      console.log("cellData", x)
-      this.cellData = x;
-
+  getSubCellForReport(reportId, cellId) {
+    this.dal.getSubCellForReport(reportId, cellId).subscribe(x => {
+      this.subCellForReport = x;
+      console.log("subcell for report", this.subCellForReport)
     })
-
-    this.getReportData().subscribe(y => {
-      console.log("report data", y)
-      this.reports = y;
-
-    })
-
-    this.getAggregatorData().subscribe(x => {
-      this.aggregators = x;
-      console.log("aggregator data", x);
-    })
-
-    this.getConditionData().subscribe(x => {
-      this.conditionData = x;
-      console.log("condition data", x);
-    })
-    this.getFireElementData().subscribe(x => {
-      this.fireElementData = x;
-      console.log("fireElement data", x);
-    })
-    this.getMetricData().subscribe(x => {
-      this.metricData = x;
-      console.log("metric data", x);
-    })
-
   }
 
 
 
-  getReportData(): Observable<any> {
-    return this.http.get('../../assets/report-type.json')
-  }
-
-  getCellData(): Observable<any> {
-    return this.http.get('../../assets/report-cell-details.json')
-  }
-
-  getAggregatorData(): Observable<any> {
-    return this.http.get('../../assets/aggregator.json')
-  }
-  getConditionData(): Observable<any> {
-    return this.http.get('../../assets/condition.json')
-  }
-  getFireElementData(): Observable<any> {
-    return this.http.get('../../assets/fire-element.json')
-  }
-  getMetricData(): Observable<any> {
-    return this.http.get('../../assets/metric.json')
-  }
-  getData(): Observable<any> {
-    return this.http.get('../../assets/Data.json')
-  }
-
-
-  getCellsForReport(): Observable<any> {
-    return this.http.get('../../assets/report-cell.json')
-  }
-
-  getDataForReport(): Observable<any> {
-    return this.http.get('../../assets/report-data.json')
-  }
 
   //for search
 
@@ -129,94 +88,72 @@ export class ReportTypeComponent implements OnInit {
     }
   }
 
-  // Operations
+  // table config 
 
   tableConfig = {
     reportId: null,
-    dataId: null,
-    cellId: null,
-    subCellId: null,
-    showSubcellsForReportId: null,
-    showSubDatacellsForReportId: null,
-    aggId: null,
-    subAggId: null
+    dataFor: null,
+    cellFor: null,
+    subCellForReport: null,
+    subCell: null,
+    subCellId: null
   }
+
+
+  // Operations
 
   openReport(reportId) {
     if (reportId === this.tableConfig.reportId) {
-      this.tableConfig.subCellId = null
-      this.tableConfig.subCellId = null;
-      this.tableConfig.subAggId = null;
-      this.tableConfig.reportId = null;
-    } else {
-      this.tableConfig = {
-        reportId: null,
-        dataId: null,
-        cellId: null,
-        subCellId: null,
-        showSubcellsForReportId: null,
-        showSubDatacellsForReportId: null,
-        aggId: null,
-        subAggId: null
-      }
-      this.tableConfig.reportId = reportId;
-    }
-
-  }
-
-  openDataForReport(reportId, dataId) {
-    this.tableConfig.reportId = reportId;
-    this.tableConfig.dataId = dataId;
-  }
-  openCellsForReport(reportId) {
-    if (reportId === this.tableConfig.showSubcellsForReportId) {
-      this.tableConfig.subCellId = null
-      this.tableConfig.subCellId = null;
-      this.tableConfig.subAggId = null;
-      this.tableConfig.showSubcellsForReportId = null;
-    } else {
-      this.tableConfig.showSubcellsForReportId = reportId;
-    }
-
-  }
-
-  openSubDatacellsForReport(reportId) {
-    if (reportId === this.tableConfig.showSubDatacellsForReportId) {
-      this.tableConfig.showSubDatacellsForReportId = null;
-    } else {
-      this.tableConfig.showSubDatacellsForReportId = reportId;
-    }
-
-  }
-
-  openSubCellsForReport(reportId, cellId) {
-    if (cellId === this.tableConfig.cellId) {
-      this.tableConfig.subCellId = null
-      this.tableConfig.subCellId = null;
-      this.tableConfig.subAggId = null;
-      this.tableConfig.cellId = null
+      this.tableConfig.reportId = null
+      this.dataForReport = null
+      this.cellForReport = null
+      this.tableConfig.dataFor = null
+      this.tableConfig.cellFor = null
     } else {
       this.tableConfig.reportId = reportId;
-      this.tableConfig.cellId = cellId;
     }
-
   }
-  openSubCellDataForReport(reportId, subCellId, subAggId) {
-    if (subCellId === this.tableConfig.subCellId) {
-      this.tableConfig.subCellId = null
-      this.tableConfig.subCellId = null;
-      this.tableConfig.subAggId = null;
+
+  openData(reportId) {
+    if (reportId === this.tableConfig.dataFor) {
+      this.tableConfig.dataFor = null
+      this.dataForReport = null
     } else {
-      this.tableConfig.reportId = reportId;
-      this.tableConfig.subCellId = subCellId;
-      this.tableConfig.subAggId = subAggId;
-      console.log("sub agg>>>>>>", this.tableConfig)
+      this.tableConfig.dataFor = reportId;
+      this.getDataForReport(reportId);
+    }
+  }
+
+  openCell(reportId) {
+    if (reportId === this.tableConfig.cellFor) {
+      this.tableConfig.cellFor = null
+      this.cellForReport = null
+    } else {
+      this.tableConfig.cellFor = reportId;
+      this.getCellForReport(reportId);
+    }
+  }
+
+  openSubCell(reportId, cellId) {
+    if (cellId === this.tableConfig.subCell && reportId === this.tableConfig.subCellForReport) {
+      this.tableConfig.subCell = null
+      this.tableConfig.subCellForReport = null
+    } else {
+      this.tableConfig.subCell = cellId
+      this.tableConfig.subCellForReport = reportId
+      this.getSubCellForReport(reportId, cellId);
+      console.log("subcell", reportId, cellId)
     }
 
   }
-  openAggData(reportId, aggId) {
-    this.tableConfig.reportId = reportId;
-    this.tableConfig.aggId = aggId;
-    console.log(this.tableConfig)
+
+
+  openSubCellData(reportId, cellId, subcellId) {
+    if (subcellId === this.tableConfig.subCellId) {
+      this.tableConfig.subCellId = null;
+    } else {
+      this.tableConfig.subCellId = subcellId
+    }
   }
+
 }
