@@ -25,5 +25,8 @@ export class DalService {
     return this.customHttp.get(`${environment.url}/subCells`, { reportId: reportId, cellId: cellId })
   }
 
+  getSubCellDataForReport(reportId, cellId, subCellId): Observable<any> {
+    return this.customHttp.get(`${environment.url}/subCellData`, { reportId: reportId, cellId: cellId, subCellId: subCellId })
+  }
 
 }

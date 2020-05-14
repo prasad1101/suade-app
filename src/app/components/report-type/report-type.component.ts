@@ -26,6 +26,7 @@ export class ReportTypeComponent implements OnInit {
   cellForReport: any;
   dataForReport: any;
   subCellForReport: any;
+  subCellDataForReport: any;
 
   ngOnInit() {
 
@@ -63,6 +64,12 @@ export class ReportTypeComponent implements OnInit {
     })
   }
 
+  getSubCellDataForReport(reportId, cellId, subCellId) {
+    this.dal.getSubCellDataForReport(reportId, cellId, subCellId).subscribe(x => {
+      console.log("subcellData", x)
+      this.subCellDataForReport = x;
+    })
+  }
 
 
 
@@ -152,6 +159,7 @@ export class ReportTypeComponent implements OnInit {
     if (subcellId === this.tableConfig.subCellId) {
       this.tableConfig.subCellId = null;
     } else {
+      this.getSubCellDataForReport(this.tableConfig.reportId, this.tableConfig.subCell, subcellId);
       this.tableConfig.subCellId = subcellId
     }
   }

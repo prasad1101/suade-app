@@ -539,7 +539,7 @@
             "value": "Test description fire element"
         }
     ],
-    "subCellData": [
+    "aggregators": [
         {
             "reportId": "report1",
             "subCellId": "aggregator",
@@ -658,7 +658,9 @@
             "cellId": "cell4",
             "cell1": "Aggregator 1",
             "cell2": "Test aggregator 1 description "
-        },
+        }
+    ],
+    "conditions": [
         {
             "reportId": "report1",
             "subCellId": "condition",
@@ -777,7 +779,9 @@
             "cellId": "cell4",
             "cell1": "condition 1",
             "cell2": "Test condition 1 description "
-        },
+        }
+    ],
+    "fire-elements": [
         {
             "reportId": "report1",
             "subCellId": "fireElement",
@@ -896,7 +900,9 @@
             "cellId": "cell4",
             "cell1": "fireElement 1",
             "cell2": "Test fireElement 1 description "
-        },
+        }
+    ],
+    "metrics": [
         {
             "reportId": "report1",
             "subCellId": "metric",

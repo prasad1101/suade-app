@@ -52,24 +52,36 @@
                         </button>Cell</td>
                 </tr>
                 <ng-container *ngFor="let cell of cellForReport">
-                    <tr *ngIf="tableConfig.cellFor && tableConfig.cellFor === report.reportId">
+                    <tr style="background-color: #8ec6c7;"
+                        *ngIf="tableConfig.cellFor && tableConfig.cellFor === report.reportId">
                         <td><button (click)="openSubCell(cell.reportId,cell.cellId)">
                                 {{tableConfig.subCellForReport == report.reportId && tableConfig.subCell == cell.cellId ? '-' : '+'}}
                             </button>{{cell.label}}</td>
                         <td>{{cell.cellDescription}}</td>
                     </tr>
                     <ng-container *ngFor="let subcell of subCellForReport">
-                        <tr
+                        <tr style="background-color: #cbe0e0;"
                             *ngIf="report.reportId === subcell.reportId && cell.reportId === subcell.reportId && cell.cellId === subcell.cellId && tableConfig.subCellForReport === subcell.reportId && tableConfig.subCell === subcell.cellId">
                             <td>
                                 <button (click)="openSubCellData(subcell.reportId,subcell.cellId,subcell.subCellId)">
-                                    {{tableConfig.subCellForReport == report.reportId && tableConfig.subCell == cell.cellId ? '-' : '+'}}
-                                </button>{{subcell.subCellId}}
+                                    {{tableConfig.subCellForReport == report.reportId && tableConfig.subCellId == subcell.subCellId ? '-' : '+'}}
+                                </button>{{subcell.subCellId | titlecase}}
                             </td>
                             <td>
                                 {{subcell.value}}
                             </td>
                         </tr>
+                        <ng-container *ngFor="let subData of subCellDataForReport">
+                            <tr
+                                *ngIf="report.reportId === subData.reportId && cell.reportId === subData.reportId && cell.cellId === subData.cellId && tableConfig.subCellForReport === subData.reportId && tableConfig.subCell === subData.cellId && tableConfig.subCellId === subData.subCellId && subcell.subCellId === subData.subCellId">
+                                <td>
+                                    {{subData.cell1}}
+                                </td>
+                                <td>
+                                    {{subData.cell2}}
+                                </td>
+                            </tr>
+                        </ng-container>
                     </ng-container>
                 </ng-container>
             </ng-container>
