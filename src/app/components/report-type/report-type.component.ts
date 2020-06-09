@@ -75,11 +75,11 @@ export class ReportTypeComponent implements OnInit {
 
   //for search
 
-  serachText: string;
+  searchText: "";
   searchReport() {
     var input, filter, table, tr, td, i, txtValue;
     //input = document.getElementById("searchInput");
-    filter = this.serachText.toUpperCase();
+    filter = this.searchText.toUpperCase();
     table = document.getElementById("dataTable");
     tr = table.getElementsByTagName("tr");
     for (i = 0; i < tr.length; i++) {

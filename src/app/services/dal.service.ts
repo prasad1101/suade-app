@@ -14,19 +14,19 @@ export class DalService {
   }
 
   getDataForReport(reportId): Observable<any> {
-    return this.customHttp.get(`${environment.url}/data`, { reportId: reportId })
+    return this.customHttp.get(`${environment.url}/CellData/${reportId}`)
   }
 
   getCellForReport(reportId): Observable<any> {
-    return this.customHttp.get(`${environment.url}/cells`, { reportId: reportId })
+    return this.customHttp.get(`${environment.url}/cells/${reportId}`)
   }
 
   getSubCellForReport(reportId, cellId): Observable<any> {
-    return this.customHttp.get(`${environment.url}/subCells`, { reportId: reportId, cellId: cellId })
+    return this.customHttp.get(`${environment.url}/subCells/${reportId}/${cellId}`)
   }
 
   getSubCellDataForReport(reportId, cellId, subCellId): Observable<any> {
-    return this.customHttp.get(`${environment.url}/subCellData`, { reportId: reportId, cellId: cellId, subCellId: subCellId })
+    return this.customHttp.get(`${environment.url}/subCellData/${reportId}/${cellId}/${subCellId}`)
   }
 
 }
